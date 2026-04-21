@@ -1,0 +1,26 @@
+% 5 timeslots per day, 5 days a week
+timeslot(t11, mon, 1).
+timeslot(t12, mon, 2).
+timeslot(t13, mon, 3).
+timeslot(t14, mon, 4).
+timeslot(t15, mon, 5).
+timeslot(t21, tue, 1).
+timeslot(t22, tue, 2).
+timeslot(t23, tue, 3).
+timeslot(t24, tue, 4).
+timeslot(t25, tue, 5).
+timeslot(t31, wed, 1).
+timeslot(t32, wed, 2).
+timeslot(t33, wed, 3).
+timeslot(t34, wed, 4).
+timeslot(t35, wed, 5).
+timeslot(t41, thu, 1).
+timeslot(t42, thu, 2).
+timeslot(t43, thu, 3).
+timeslot(t44, thu, 4).
+timeslot(t45, thu, 5).
+timeslot(t51, fri, 1).
+timeslot(t52, fri, 2).
+timeslot(t53, fri, 3).
+timeslot(t54, fri, 4).
+timeslot(t55, fri, 5).
