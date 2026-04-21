@@ -23,6 +23,10 @@ timeslot(t6, tue, 6).
 instructor_available(c1, t1).
 instructor_available(c1, t3).
 
+% group_enrollment(GroupId, Size)
+% Size = number of students in the group
+group_enrollment(gl3,90).
+
 % assign(CourseId, SessionIndex, RoomId, TimeslotId)
 Schedule [
 assign(c1, 1, r2, t3).

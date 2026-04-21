@@ -1,4 +1,5 @@
 % group gl3
+
 course(Algo, 1, 1, gl3, Projector).
 course(NumAnal, 1, 1, gl3, none).
 course(Optim, 1, 1, gl3, none).
