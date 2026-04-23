@@ -5,6 +5,9 @@
 % Equipment = required equipment type atom
 course(c1, 2, 2, g1, projector).
 
+% group_size(Group, Size)
+group_size(g1, 30)
+
 % room(Id, Capacity, Equipment, Building, EnergyCost)
 % EnergyCost = hourly energy cost for each room
 room(r1, 40, projector, b1, 2).

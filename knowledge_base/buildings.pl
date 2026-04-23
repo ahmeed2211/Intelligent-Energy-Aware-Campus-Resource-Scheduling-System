@@ -1,3 +1,3 @@
-building(b0, 20).
-building(b1, 30).
-building(b2, 30).
+building(b0, 150).
+building(b1, 80).
+building(b2, 80).

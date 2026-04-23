@@ -1,32 +1,29 @@
-% RDC
-room(A1, 90, projector, b0, 3).   
-room(A2, 90, projector, b0, 2).   
-room(A3, 90, projector, b0, 2).   
-room(A4, 90, projector, b0, 5).   
-room(A5, 90, projector, b0, 4).   
-room(A6, 90, projector, b0, 1).  
-room(A7, 180, none, b0, 2).  
-room(A8, 180, projector, b0, 3).
-room(A9, 90, projector, b0, 4).
+% RDC (Ground Floor) — Building b0
+room(rdc_a1, 90,  projector, b0, 3).
+room(rdc_a2, 90,  projector, b0, 2).
+room(rdc_a3, 90,  projector, b0, 2).
+room(rdc_a4, 90,  projector, b0, 5).
+room(rdc_a5, 90,  projector, b0, 4).
+room(rdc_a6, 90,  projector, b0, 1).
+room(rdc_a7, 180, none,      b0, 2).
+room(rdc_a8, 180, projector, b0, 3).
+room(rdc_a9, 90,  projector, b0, 4).
 
-% 1er etage
-room(165, 30, none, b1, 1).
-room(167, 30, none, b1, 1).
-room(169, 30, none, b1, 1).
-room(171, 30, none, b1, 1).
-room(173, 30, lab, b1, 3).
-room(175, 30, lab, b1, 3).
-room(177, 30, lab, b1, 3).
-room(179, 30, lab, b1, 3).
+% 1er etage — Building b1
+room(r1_165, 30, none, b1, 1).
+room(r1_167, 30, none, b1, 1).
+room(r1_169, 30, none, b1, 1).
+room(r1_171, 30, none, b1, 1).
+room(r1_173, 30, lab,  b1, 3).
+room(r1_175, 30, lab,  b1, 3).
+room(r1_177, 30, lab,  b1, 3).
+room(r1_179, 30, lab,  b1, 3).
 
-% 2eme etage
-room(265, 30, none, b2, 1).
-room(267, 30, none, b2, 1).
-room(269, 30, none, b2, 1).
-room(271, 30, none, b2, 1).
-room(273, 30, lab, b2, 3).
-room(275, 30, lab, b2, 3).
-room(277, 30, lab, b2, 3).
-
-% groups capacities
-group_enrollment(gl3,90).
+% 2eme etage — Building b2
+room(r2_265, 30, none, b2, 1).
+room(r2_267, 30, none, b2, 1).
+room(r2_269, 30, none, b2, 1).
+room(r2_271, 30, none, b2, 1).
+room(r2_273, 30, lab,  b2, 3).
+room(r2_275, 30, lab,  b2, 3).
+room(r2_277, 30, lab,  b2, 3).

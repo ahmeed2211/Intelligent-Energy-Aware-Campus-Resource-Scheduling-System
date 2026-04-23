@@ -1,16 +1,16 @@
 % group gl3
 
-course(Algo, 1, 1, gl3, Projector).
-course(NumAnal, 1, 1, gl3, none).
-course(Optim, 1, 1, gl3, none).
-course(DataAnal, 2, 1, gl3, projector).
-course(ProLog, 2, 1, gl3, projector).
-course(DB, 2, 1, gl3, projector).
-course(Marketing, 1, 1, gl3, projector).
-course(DistSys, 2, 1, gl3, projector).
-course(Fr, 1, 1, gl3, none).
-course(Eng, 1, 1, gl3, none).
-course(CoDesign, 2, 1, gl3, projector).
-course(Complex, 1, 1, gl3, none).
-course(Web, 2, 1, gl3, projector).
-course(Concept, 1, 1, gl3, projector).
+course(algo, 1, 1, gl3, projector).
+course(numAnal, 1, 1, gl3, none).
+course(optim, 1, 1, gl3, none).
+course(dataAnal, 2, 1, gl3, projector).
+course(proLog, 2, 1, gl3, projector).
+course(db, 2, 1, gl3, projector).
+course(marketing, 1, 1, gl3, projector).
+course(distSys, 2, 1, gl3, projector).
+course(fr, 1, 1, gl3, none).
+course(eng, 1, 1, gl3, none).
+course(coDesign, 2, 1, gl3, projector).
+course(complex, 1, 1, gl3, none).
+course(web, 2, 1, gl3, projector).
+course(concept, 1, 1, gl3, projector).
