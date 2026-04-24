@@ -22,15 +22,9 @@ print_schedule([session(Course, K, Room, TimeSlot)|Rest]) :-
            [Course, K, Room, TimeSlot]),
     print_schedule(Rest).
 
-print_schedules([]).
-print_schedules([S|Rest]) :-
-    print_schedule(S),
-    nl,
-    print_schedules(Rest).
 run :-
-    findnsols(100, Schedule, solve(Schedule), Schedules),
-    ( Schedules \= []
-    -> format("Schedules found:~n"),
-       print_schedules(Schedules)
+    ( solve(Schedule)
+    -> format("Schedule found:~n"),
+       print_schedule(Schedule)
     ;  format("No valid schedule found.~n")
     ).
