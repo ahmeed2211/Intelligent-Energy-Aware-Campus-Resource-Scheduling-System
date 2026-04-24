@@ -12,6 +12,7 @@ scheduleacc([(Course,K)|Rest], Partial, Final) :-
     room_capacity_ok(Course, Room),
     instructor_availability_ok(Course, TimeSlot),
     no_room_conflict(Room, TimeSlot, Partial),
+    no_course_conflict(Course, TimeSlot, Partial),
     no_group_conflict(Course, TimeSlot, Partial),
     scheduleacc(Rest, [session(Course,K,Room,TimeSlot)|Partial], Final).
 

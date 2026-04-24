@@ -32,3 +32,9 @@ no_group_conflict(Course, TimeSlot, [session(C2, _, _, TimeSlot)|_]) :-
     Course \= C2, !, fail.  % conflict_if_same_group_and_time_slot
 no_group_conflict(Course, TimeSlot, [_|Rest]) :-
     no_group_conflict(Course, TimeSlot, Rest).
+
+% the same course cannot be scheduled at the same time in two different rooms
+no_course_conflict(_,_,[]).
+no_course_conflict(Course, TimeSlot, [session(Course, _, Room, TimeSlot)|_]) :- !, fail.  % conflict_if_same_course_and_time_slot
+no_course_conflict(Course, TimeSlot, [_|Rest]) :-
+    no_course_conflict(Course, TimeSlot, Rest).
