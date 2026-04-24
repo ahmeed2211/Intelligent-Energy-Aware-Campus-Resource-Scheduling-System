@@ -23,10 +23,13 @@ This person **must finish their core structure by end of week 1**, otherwise eve
 **Owns:** The recursive generator + hard constraint pruning.
 
 - The main `schedule/2` generator predicate
+schedule/2 : calls scheduleacc/3 
 - Conflict checks: room-time, group-time, capacity, equipment, instructor
+updated in constraints
 - Constraint ordering strategy (the intellectually hard part of M1)
+from cheapest and most selective to the most expensive
 - Performance: ensuring early failure, avoiding combinatorial explosion
-
+solve/1 returns one valid schedule, solveall/1 is (returns all valid schedule): leads to combinatorial explosion without optimization  
 This is the **most algorithmically complex role**. Best given to whoever is most comfortable with Prolog's execution model and backtracking.
 
 ---
