@@ -1,9 +1,8 @@
-% course(Id, Sessions, Duration, Group, Equipment)
-% Sessions = number of weekly sessions needed
-% Duration = length in timeslots of each session
+% course(Id, SessionDurationList, Group, Equipment)
+% SessionDurationList = list of durations for each session needed
 % Group = student group atom
 % Equipment = required equipment type atom
-course(c1, 2, 2, g1, projector).
+course(c1, [2, 2], g1, projector).
 
 % group_size(Group, Size)
 group_size(g1, 30)

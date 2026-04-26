@@ -1,13 +1,20 @@
-:- consult('./knowledge_base/courses').
-:- consult('./knowledge_base/rooms').
-:- consult('./knowledge_base/buildings').
-:- consult('./knowledge_base/timeslots').
-:- consult('./knowledge_base/availability').
-:- consult('./knowledge_base/group').
+:- multifile course/4.
+:- multifile instructor_available/2.
 
-:- consult('./core/helpers').
-:- consult('./core/constraints').
-:- consult('./core/generator').
+:- consult('knowledge_base/groups.pl').
+:- consult('knowledge_base/buildings.pl').
+:- consult('knowledge_base/rooms.pl').
+:- consult('knowledge_base/timeslots.pl').
+
+:- consult('knowledge_base/courses/gl3_courses.pl').
+:- consult('knowledge_base/courses/mpi_courses.pl').
+
+:- consult('knowledge_base/availability/gl3_availability.pl').
+:- consult('knowledge_base/availability/mpi_availability.pl').
+
+:- consult('core/helpers.pl').
+:- consult('core/constraints.pl').
+:- consult('core/generator.pl').
 
 solve(Schedule) :-
     expand_all_courses(Sessions),
