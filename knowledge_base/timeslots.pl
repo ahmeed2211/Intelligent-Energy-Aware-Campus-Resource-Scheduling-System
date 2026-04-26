@@ -1,3 +1,5 @@
+% timeslot(name, day, period).
+
 % Monday
 timeslot(t11, mon, 1).
 timeslot(t12, mon, 2).

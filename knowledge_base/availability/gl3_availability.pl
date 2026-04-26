@@ -41,6 +41,12 @@ instructor_available(db, t23).
 instructor_available(db, t24).
 instructor_available(db, t25).
 
+instructor_available(dist_sys, t21).
+instructor_available(dist_sys, t22).
+instructor_available(dist_sys, t23).
+instructor_available(dist_sys, t24).
+instructor_available(dist_sys, t25).
+
 % Group 3: available Wednesday only
 instructor_available(marketing, t31).
 instructor_available(marketing, t32).
@@ -53,6 +59,12 @@ instructor_available(dist_sys, t32).
 instructor_available(dist_sys, t33).
 instructor_available(dist_sys, t34).
 instructor_available(dist_sys, t35).
+
+instructor_available(db, t31).
+instructor_available(db, t32).
+instructor_available(db, t33).
+instructor_available(db, t34).
+instructor_available(db, t35).
 
 % Group 4: available Thursday only
 instructor_available(gl3_fr, t41).

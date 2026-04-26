@@ -24,13 +24,13 @@ room_energy_cost(Room, EnergyCost):-
     room(Room, _, _, _, EnergyCost).
 % expand_course(+CourseId, -SessionList)
 expand_course(Course, Sessions) :-
-    course(Course, Durations, _, _),
+    course(Course, Durations, Group, _),
     length(Durations, NumSessions),
     numlist(1, NumSessions, Indices),
-    maplist(pair_with_duration(Course), Indices, Durations, Sessions).
+    maplist(pair_with_duration(Course, Group), Indices, Durations, Sessions).
 
-% pair_with_duration(+Course, +Index, +Duration, -Pair)
-pair_with_duration(Course, K, Duration, (Course, K, Duration)).
+% pair_with_duration(+Course, +Group, +Index, +Duration, -Pair)
+pair_with_duration(Course, Group, K, Duration, (Course, Group, K, Duration)).
 
 % expand_all_courses(-SessionList)
 expand_all_courses(AllSessions) :-
