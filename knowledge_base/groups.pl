@@ -2,6 +2,7 @@
 group_size(gl3, 30).
 group_size(mpi, 90).
 group_size(imi3, 30).
+group_size(iia3, 30).
 group_size(rt3, 30).
 
 % group_blackout(Group, TimeSlot)
@@ -19,6 +20,13 @@ group_blackout(mpi, t35).
 group_blackout(mpi, t61).
 group_blackout(mpi, t62).
 group_blackout(mpi, t63).
+
+% iia3 has wednesday afternoon and saturday free
+group_blackout(iia3, t34).
+group_blackout(iia3, t35).
+group_blackout(iia3, t61).
+group_blackout(iia3, t62).
+group_blackout(iia3, t63).
 
 % rt3 has wednesday afternoon and saturday free!
 group_blackout(rt3, t34).

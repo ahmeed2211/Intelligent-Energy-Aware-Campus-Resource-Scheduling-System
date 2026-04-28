@@ -28,7 +28,7 @@ instructor_availability_ok([C|Cs], TimeSlot) :- !,
     instructor_available(C, TimeSlot),
     instructor_availability_ok(Cs, TimeSlot).
 instructor_availability_ok(Course, TimeSlot) :-
-    instructor_available(Course, TimeSlot).
+    once(instructor_available(Course, TimeSlot)).
 
 % return true if there is no room conflict; the same room cannot be used for two different courses at the same time
 % no_room_conflict(+Room, +TimeSlot, +Assignments)
