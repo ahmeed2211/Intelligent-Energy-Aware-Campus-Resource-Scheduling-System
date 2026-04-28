@@ -3,8 +3,6 @@
 
 :- multifile course/4.
 
-course([instru_opti, thermo_app], [2], imi3, lab).
-course([meca_fluide, thermo_indus], [2], imi3, lab).
 course(gmao, [1], imi3, none).
 course(thermo_app, [1], imi3, projector).
 course(instru_opti, [1], imi3, none).
@@ -21,3 +19,5 @@ course(dsp, [1], imi3, none).
 course(arab, [1], imi3, none).
 course(imi3_fr, [1], imi3, none).
 course(market, [1], imi3, none).
+course([instru_opti, thermo_app], [2], imi3, lab).
+course([meca_fluide, thermo_indus], [2], imi3, lab).
