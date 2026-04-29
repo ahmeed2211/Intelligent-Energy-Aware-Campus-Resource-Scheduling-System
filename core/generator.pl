@@ -8,13 +8,22 @@ scheduleacc([(Course,Group,K,Duration)|Rest], Partial, Final) :-
     no_lunch_cut(Timeslots),
     % 2. Check instructor + group constraints before touching rooms (cheap fact lookups first)
     check_all_timeslots_no_room(Course, Group, Timeslots, Partial),
-    % 3. Bind room LAST — rooms are generously available, almost always passes
-    room(Room, _, _, _, _),
-    equipment_ok(Course, Room),
-    room_capacity_ok(Course, Room),
+    % 3. Bind room LAST — pick the cheapest valid rooms first!
+    valid_rooms_for_course_sorted(Course, SortedRooms),
+    member(Room, SortedRooms),
     check_room_conflicts(Room, Timeslots, Partial),
     add_sessions(Course, Group, K, Room, Timeslots, Partial, NewPartial),
     scheduleacc(Rest, NewPartial, Final).
+
+% Helper to get all valid rooms for a course, sorted by energy cost (Cheapest-First Heuristic)
+valid_rooms_for_course_sorted(Course, SortedRooms) :-
+    findall(Room, (room(Room, _, _, _, _), equipment_ok(Course, Room), room_capacity_ok(Course, Room)), ValidRooms),
+    maplist(room_energy_key, ValidRooms, KeyedRooms),
+    keysort(KeyedRooms, SortedKeyedRooms),
+    pairs_values(SortedKeyedRooms, SortedRooms).
+
+room_energy_key(Room, Cost-Room) :-
+    room_energy_cost(Room, Cost).
 
 % Check per-timeslot constraints that dont require a room (cheapest to most expensive)
 check_all_timeslots_no_room(_, _, [], _).

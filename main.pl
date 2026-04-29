@@ -21,10 +21,12 @@
 :- consult('core/helpers.pl').
 :- consult('core/constraints.pl').
 :- consult('core/generator.pl').
+:- consult('core/energy.pl').
 
 solve(Schedule) :-
     expand_all_courses(Sessions),
-    schedule(Sessions, Schedule).
+    schedule(Sessions, Schedule),
+    validate_all_buildings_energy(Schedule).
 
 solve_all(Schedules) :-
    findall(S, solve(S), Schedules).

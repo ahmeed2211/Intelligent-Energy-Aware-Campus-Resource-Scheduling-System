@@ -1,5 +1,5 @@
-% building(name, capacity)
+% building(name, daily_threshold)
 
-building(b0, 150).
-building(b1, 80).
-building(b2, 80).
+building(b0, 1200).
+building(b1, 1500).
+building(b2, 1300).
