@@ -49,6 +49,7 @@ run :-
     ( solve(Schedule)
     -> format("Schedule found:~n"),
        predsort(compare_sessions, Schedule, SortedSchedule),
-       print_schedule(SortedSchedule)
+       print_schedule(SortedSchedule),
+       print_building_energy(Schedule)
     ;  format("No valid schedule found.~n")
     ).

@@ -62,3 +62,25 @@ validate_building_days(_, [], _).
 validate_building_days(Building, [Day|Rest], Schedule) :-
     validate_building_energy(Building, Day, Schedule),
     validate_building_days(Building, Rest, Schedule).
+
+% building_weekly_energy(+Building, +Days, +Schedule, -Total)
+building_weekly_energy(_, [], _, 0).
+building_weekly_energy(Building, [Day|Rest], Schedule, Total) :-
+    building_daily_energy(Building, Day, Schedule, Daily),
+    building_weekly_energy(Building, Rest, Schedule, RestTotal),
+    Total is Daily + RestTotal.
+
+% print_building_energy(+Schedule)
+print_building_energy(Schedule) :-
+    format("~n--- Weekly Energy Usage Report ---~n"),
+    findall(B, building(B, _), Buildings),
+    Days = [mon, tue, wed, thu, fri],
+    print_buildings_energy(Buildings, Days, Schedule).
+
+print_buildings_energy([], _, _).
+print_buildings_energy([Building|Rest], Days, Schedule) :-
+    building_weekly_energy(Building, Days, Schedule, WeeklyTotal),
+    building(Building, DailyThreshold),
+    WeeklyThreshold is DailyThreshold * 5,
+    format("Building ~w: ~w / ~w (Weekly Limit)~n", [Building, WeeklyTotal, WeeklyThreshold]),
+    print_buildings_energy(Rest, Days, Schedule).
