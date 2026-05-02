@@ -14,6 +14,7 @@ export const translater = {
     "complex": "Complexité des algorithmes",
     "web": "Protocoles de communication web",
     "concept": "Méthodologies de conception",
+    "gl3_ppp": "Project personnel professionel",
 
     // IIA3
     "ro": "Recherche opérationnelle",
