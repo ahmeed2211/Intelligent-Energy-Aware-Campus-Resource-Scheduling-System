@@ -41,7 +41,6 @@ validate_building_energy(Building, Day, Schedule) :-
     ( TotalEnergy =< Threshold -> 
         true
     ; 
-        format('WARNING: Building ~w exceeded daily threshold on ~w (Usage: ~w, Limit: ~w)~n', [Building, Day, TotalEnergy, Threshold]),
         fail
     ).
 

@@ -1,79 +1,58 @@
-# Intelligent-Energy-Aware-Campus-Resource-Scheduling-System
-## Proposed Split for 4 People
+# Intelligent Energy-Aware Campus Resource Scheduling System
 
-The key principle: **minimize blocking dependencies**. Two people can work in parallel from day one if the knowledge base contract is agreed on first (spend 1 day together defining the data structures before splitting).
+## Project Description
+This project is an advanced campus resource management system designed to generate optimal academic schedules while staying within strict energy consumption limits. It combines a powerful **Prolog-based Constraint Satisfaction Engine** with a modern **React Dashboard** to provide a real-time, visual overview of campus resources.
 
----
-
-### 🔵 Person 1 — Knowledge Base & Data Architect
-
-**Owns:** The foundation everything else builds on.
-
-- Define all facts: `course/5`, `room/4`, `building/2`, `timeslot/2`, `instructor_available/2`, etc.
-- Design the canonical representation of a `session assignment`
-- Write helper predicates: `same_day/2`, `overlaps/2`, `room_in_building/2`, etc.
-- Document the "contract" (what predicates exist, their signatures) so others can code against it
-
-This person **must finish their core structure by end of week 1**, otherwise everyone is blocked. After that, they assist with testing and write the report's formal modeling section.
+The core of the system solves the complex problem of assigning courses, instructors, and rooms into time slots while respecting several categories of constraints:
+- **Hard Constraints**: No room/group/instructor overlaps, equipment requirements, and capacity limits.
+- **Energy Constraints**: Monitoring and limiting the total energy consumption per building per day.
+- **Optimization**: Prioritizing schedules that minimize room waste and maintain instructor preferences.
 
 ---
 
-### 🔴 Person 2 — Constraint Engine (Milestone 1 core)
-
-**Owns:** The recursive generator + hard constraint pruning.
-
-- The main `schedule/2` generator predicate
-schedule/2 : calls scheduleacc/3 
-- Conflict checks: room-time, group-time, capacity, equipment, instructor
-updated in constraints
-- Constraint ordering strategy (the intellectually hard part of M1)
-from cheapest and most selective to the most expensive
-- Performance: ensuring early failure, avoiding combinatorial explosion
-solve/1 returns one valid schedule, solveall/1 is (returns all valid schedule): leads to combinatorial explosion without optimization  
-This is the **most algorithmically complex role**. Best given to whoever is most comfortable with Prolog's execution model and backtracking.
+## Tech Stack
+- **Backend**: SWI-Prolog (Constraint Solver & HTTP API)
+- **Frontend**: React, Vite, Styled-Components, Axios
+- **Data Model**: Fact-based knowledge base in Prolog
 
 ---
 
-### 🟢 Person 3 — Energy & Arithmetic Layer (Milestone 2)
+## How to Run
 
-**Owns:** Everything numeric.
+### 1. Prerequisites
+- **SWI-Prolog**: Ensure you have [SWI-Prolog](https://www.swi-prolog.org/) installed.
+- **Node.js**: Ensure you have [Node.js](https://nodejs.org/) (v16+) and npm installed.
 
-- Energy accumulator threading through the recursive generator (works closely with Person 2)
-- `compute_energy/3`, `daily_energy/3`, `total_weekly_energy/2`
-- Building threshold enforcement *during* generation
-- Global metrics computation
+### 2. Running the Backend (Prolog API)
+The backend generates the schedule and serves it via a JSON API on port `8080`.
+1. Open the project root directory.
+2. Open `server.pl` with SWI-Prolog.
+3. If you are using the SWI-Prolog GUI, hit **Compile -> Make**.
+4. The server will start listening at `http://localhost:8080`.
 
-This role requires understanding Person 2's generator to inject the accumulator correctly. The **handoff point** between Person 2 and 3 is the most critical integration moment in the project.
+*Note: If you make changes to the `.pl` files, type `make.` in the Prolog console to reload the changes instantly.*
 
----
-
-### 🟡 Person 4 — Optimization, Evaluation & Presentation
-
-**Owns:** Milestone 3 + the demo.
-
-- Schedule scoring predicates
-- `best_schedule/2` using branch-and-bound or findall+sort
-- Fairness metrics: load imbalance, room usage variance
-- The PowerPoint and demo flow
-- Driving the final integration (making sure M1 + M2 + M3 fit together cleanly)
-
-This person can start designing the optimization interface early, then implement once valid schedules are being generated.
-
----
-
-## Timeline View
-
-```
-Week 1   [ALL 4] — agree on data structures, Person 1 writes KB skeleton
-Week 2   [P1 finishes KB] [P2 starts generator] [P3 designs energy model]
-Week 3   [P2 + P3 integrate energy into generator] [P4 starts optimization design]
-Week 4   [P4 implements optimization] [P1+P2 write M1 doc] [P3 writes M2 doc]
-Week 5   [Full integration + testing] [P4 drives report + slides]
-Week 6   [Buffer + defense prep — everyone can explain everything]
-```
+### 3. Running the Frontend (React Dashboard)
+The frontend provides the visual interface to view schedules and energy metrics.
+1. Navigate to the `frontend` directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open your browser to the URL shown in the terminal (usually `http://localhost:5173` or `http://localhost:5175`).
 
 ---
 
-## One Critical Rule
-
-The project document explicitly says **every student must explain the entire architecture**. So while responsibilities are split, you should each do a "teaching session" to the other 3 at the end of each milestone. Person 2 should be able to explain the energy accumulator; Person 3 should understand constraint pruning. Budget time for this — it saves you during the oral.
+## Key Features
+- **Interactive Timetable**: Group-based filtering to view schedules for GL3, IIA3, IMI3, MPI, and RT3.
+- **Energy Monitoring**: Real-time stats on building energy usage vs. weekly limits.
+- **Multi-slot Merging**: Visual support for sessions that span multiple consecutive time slots.
+- **Dark Mode UI**: Professional, high-contrast institutional design.
+- **Automated Translation**: Course codes are automatically translated into full academic titles.
