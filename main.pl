@@ -22,6 +22,7 @@
 :- consult('core/constraints.pl').
 :- consult('core/generator.pl').
 :- consult('core/energy.pl').
+:- consult('core/optimization.pl').
 
 solve(Schedule) :-
     expand_all_courses(Sessions),
@@ -51,5 +52,15 @@ run :-
        predsort(compare_sessions, Schedule, SortedSchedule),
        print_schedule(SortedSchedule),
        print_building_energy(Schedule)
+    ;  format("No valid schedule found.~n")
+    ).
+
+run_optimization(Criteria) :-
+    format("~n--- Running Optimization (~w) ---~n", [Criteria]),
+    ( optimize(Criteria, Schedule, BestScore)
+    -> predsort(compare_sessions, Schedule, SortedSchedule),
+       print_schedule(SortedSchedule),
+       print_building_energy(Schedule),
+       format("~nOptimal Schedule found with ~w score ~2f:~n", [Criteria, BestScore])
     ;  format("No valid schedule found.~n")
     ).
