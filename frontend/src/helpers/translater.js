@@ -1,4 +1,36 @@
 export const translater = {
+    // BIO3
+    "bio3_fr": "Français",
+    "bio3_eng": "Anglais",
+    "biostatistique": "Biostatistique",
+    "pharmacologie": "Pharmacologie",
+    "biotechnologie_env": "Biotechnologie environnementale",
+    "biotechnologie_molecuaires": "Biotechnologie moléculaire",
+    "genie_genetique": "Génie génétique",
+    "genie_enzymatique": "Génie enzymatique",
+    "immunologie_technologie_immunologique": "Immunologie technologie Immunologique",
+    "genie_biocatalyse": "Génie biocatalyse",
+    "technologie_microbienne": "Technologie microbienne",
+    "bio3_arabe": "Arabe",
+    "bio3_marketing": "Marketing",
+    "biosecurite": "Biosécurité et bioéthique",
+    "resistance_materiaux": "Résistance materiaux",
+
+    // CH3
+    "ch3_fr": "Français",
+    "ch3_eng": "Anglais",
+    "stategie_sythese": "Stratégie synthèse",
+    "gestion_traitement": "Gestion traitement déchets",
+    "electrochimie": "Electrochimie",
+    "methodes_separation": "Méthodes séparation",
+    "automatisation_regulation_capteurs_trait_inf": "Automatisation régulation capteurs traitement informatique",
+    "methodes_numeriques": "Méthodes numériques",
+    "etas_de_la_matiere": "Etats de la matière",
+    "ch3_arabe": "Arabe",
+    "ch3_marketing": "Marketing",
+    "optimisation": "Optimisation",
+    "traitement_des_eaux": "Traitement des eaux",
+
     // GL3
     "algo": "Algorithmique",
     "num_anal": "Analyse numérique",
@@ -45,6 +77,22 @@ export const translater = {
     "arch_av_proc": "Architecture avancée des processus",
     "mod_id_est": "Modélisation, identification et estimation",
 
+    // IIA4
+    "iia4_man_proj": "Management projet",
+    "comm_opti": "Commande optimale",
+    "imag_embar": "Imagerie embarquée",
+    "syst_non_lin": "Systèmes non linéaires",
+    "mod_anal_eval": "Modélisation, analyse et évaluation performances",
+    "iia4_eng": "Anglais",
+    "concept_ordi": "Conception assistée par ordinateur",
+    "rli": "R.L.I.",
+    "iia4_grh": "Gestion des ressources humaines",
+    "arch_prog_sys": "Arch. Prog. Sys.",
+    "mach_learn": "Machine Learning",
+    "data_sc": "Data Science",
+    "inter_liot": "Inter L.I.O.T.",
+    "mape": "M.A.P.E",
+
     // IMI3
     "gmao": "G.M.A.O.",
     "thermo_app": "Thermodynamiques appliquées",
@@ -60,6 +108,39 @@ export const translater = {
     "arab": "Arabe",
     "imi3_fr": "Français",
     "market": "Marketing",
+
+    /*
+course(imi4_grh, [1], imi4, projector).
+course(cem, [1], imi4, none).
+course(meca_continus_solides, [1], imi4, none).
+course([cem, cfao], [2], imi4, lab).
+course(sc_mat, [1], imi4, none).
+course(cfao, [1], imi4, projector).
+course([meca_continus_solides, comm_machi], [2], imi4, lab).
+course(imi4_man_proj, [1], imi4, none).
+course(info_instrum, [1, 2], imi4, none).
+course(imi4_eng, [1], imi4, none).
+course([capt_int_com, micro_electro], [1], imi4, lab).
+course([intell_art, temps_reel], [1], imi4, projector).
+course([aerodynamique, micro_electro], [1], imi4, projector).
+course([aerodynamique, micro_electro, micro_electro, temps_reel], [2], imi4, lab).
+course([capt_int_com, intell_art], [2], imi4, lab).
+    */
+    // IMI4
+    "imi4_grh": "Gestion des ressources humaines",
+    "cem": "CEM sécurité des installations",
+    "meca_continus_solides": "Mécanique des milieux continus solides",
+    "sc_mat": "Science des matériaux",
+    "cfao": "C.F.A.O.",
+    "comm_machi": "Commande des machines",
+    "imi4_man_proj": "Management projet",
+    "info_instrum": "Informatique pour l'instrumentation",
+    "imi4_eng": "Anglais",
+    "capt_int_com": "Capteurs int. com.",
+    "micro_electro": "Micro électronique",
+    "intell_art": "Intelligence artificielle",
+    "temps_reel": "Temps réel",
+    "aerodynamique": "Aérodynamique",
 
     // MPI
     "anal": "Analyse",

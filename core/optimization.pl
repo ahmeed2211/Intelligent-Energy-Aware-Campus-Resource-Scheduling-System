@@ -36,7 +36,7 @@ building_day_energy(Schedule, Day, Building, Energy) :-
     building_daily_energy(Building, Day, Schedule, Energy).
 
 % --- Metric 3: Fairness in Room Allocation (Variance) ---
-% Var(R) = (1/m) * sum over rooms(Usage(r_j) - average)^2
+% Var(R) = (1/m) * sum over rooms(Usage(r_j) - average)^2)
 schedule_room_variance(Schedule, Variance) :-
     findall(R, room(R,_,_,_,_), Rooms),
     length(Rooms, M),

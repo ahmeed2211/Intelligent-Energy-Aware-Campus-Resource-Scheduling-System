@@ -13,12 +13,19 @@ function App() {
   const [activeGroup, setActiveGroup] = useState('');
 
   useEffect(() => {
+    setLoading(true);
+    setError(null);
+
     axios.get('http://localhost:8080/api/schedule')
       .then(response => {
-        setData(response.data);
-        const groups = getGroups(response.data);
-        if (groups.length > 0) {
-          setActiveGroup(groups[0].id);
+        if (response.data.status === 'success') {
+          setData(response.data);
+          const groups = getGroups(response.data);
+          if (groups.length > 0 && (!activeGroup || !groups.find(g => g.id === activeGroup))) {
+            setActiveGroup(groups[0].id);
+          }
+        } else {
+          setError(response.data.message || "Failed to load schedule.");
         }
         setLoading(false);
       })
@@ -29,30 +36,6 @@ function App() {
       });
   }, []);
 
-  if (loading) {
-    return (
-      <S.AppContainer>
-        <S.MainHeader>
-          <S.Title>Campus Resource Dashboard</S.Title>
-          <S.Subtitle>Loading schedule data...</S.Subtitle>
-        </S.MainHeader>
-      </S.AppContainer>
-    );
-  }
-
-  if (error) {
-    return (
-      <S.AppContainer>
-        <S.MainHeader>
-          <S.Title>Campus Resource Dashboard</S.Title>
-          <S.Subtitle style={{ color: '#ef4444' }}>{error}</S.Subtitle>
-        </S.MainHeader>
-      </S.AppContainer>
-    );
-  }
-
-  const groups = getGroups(data);
-
   return (
     <S.AppContainer>
       <S.MainHeader>
@@ -60,28 +43,42 @@ function App() {
         <S.Subtitle>Intelligent Energy-Aware Scheduling System</S.Subtitle>
       </S.MainHeader>
 
-      <ErrorBoundary>
-        <S.DashboardGrid>
-          <EnergyDashboard data={data} />
+      {loading && (
+        <S.Subtitle style={{ color: '#94a3b8', marginTop: '20px' }}>
+          Loading schedule data...
+        </S.Subtitle>
+      )}
 
-          <div>
-            <S.SectionTitle>Master Schedule</S.SectionTitle>
-            <S.DaySelectorContainer>
-              {groups.map(group => (
-                <S.DayTab
-                  key={group.id}
-                  $active={activeGroup === group.id}
-                  onClick={() => setActiveGroup(group.id)}
-                >
-                  {group.name}
-                </S.DayTab>
-              ))}
-            </S.DaySelectorContainer>
+      {error && !loading && (
+        <S.Subtitle style={{ color: '#ef4444', marginTop: '20px' }}>
+          {error}
+        </S.Subtitle>
+      )}
 
-            <ScheduleTimeline data={data} groupId={activeGroup} />
-          </div>
-        </S.DashboardGrid>
-      </ErrorBoundary>
+      {!loading && !error && data && (
+        <ErrorBoundary>
+          <S.DashboardGrid>
+            <EnergyDashboard data={data} />
+
+            <div>
+              <S.SectionTitle>Master Schedule</S.SectionTitle>
+              <S.DaySelectorContainer>
+                {getGroups(data).map(group => (
+                  <S.DayTab
+                    key={group.id}
+                    $active={activeGroup === group.id}
+                    onClick={() => setActiveGroup(group.id)}
+                  >
+                    {group.name}
+                  </S.DayTab>
+                ))}
+              </S.DaySelectorContainer>
+
+              <ScheduleTimeline data={data} groupId={activeGroup} />
+            </div>
+          </S.DashboardGrid>
+        </ErrorBoundary>
+      )}
     </S.AppContainer>
   );
 }

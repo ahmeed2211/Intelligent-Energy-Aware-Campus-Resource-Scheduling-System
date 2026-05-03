@@ -25,6 +25,9 @@ server(Port) :-
 
 % Register the GET /api/schedule endpoint
 :- http_handler('/api/schedule', handle_schedule, []).
+:- http_handler('/api/optimize/energy', handle_optimize_energy, []).
+:- http_handler('/api/optimize/imbalance', handle_optimize_imbalance, []).
+:- http_handler('/api/optimize/fairness', handle_optimize_fairness, []).
 
 % ---------------------------------------------------------
 % Request Handlers
@@ -57,6 +60,42 @@ handle_schedule(Request) :-
         reply_json_dict(_{
             status: "error", 
             message: "No valid schedule found."
+        })
+    ).
+
+handle_optimize_energy(Request) :- handle_optimize(Request, energy).
+handle_optimize_imbalance(Request) :- handle_optimize(Request, imbalance).
+handle_optimize_fairness(Request) :- handle_optimize(Request, fairness).
+
+handle_optimize(Request, Criteria) :-
+    % Enable CORS for this specific route
+    cors_enable(Request, [methods([get])]),
+    
+    % Attempt to optimize the schedule
+    ( optimize(Criteria, Schedule, BestScore) ->
+        % Sort the schedule for consistent output
+        predsort(compare_sessions, Schedule, SortedSchedule),
+        
+        % Group sessions by student group
+        group_schedule(SortedSchedule, GroupedSchedule),
+        get_energy_info(Schedule, EnergyList),
+        
+        % Build the response Dict
+        Response = _{
+            status: "success",
+            criteria: Criteria,
+            score: BestScore,
+            schedule: GroupedSchedule,
+            energy: EnergyList
+        },
+        
+        % Send the JSON response
+        reply_json_dict(Response)
+    ;   
+        % Fallback if no schedule could be generated
+        reply_json_dict(_{
+            status: "error", 
+            message: "No valid schedule found for optimization."
         })
     ).
 

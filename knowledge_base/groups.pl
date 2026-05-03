@@ -7,6 +7,8 @@ group_size(iia3, 30).
 group_size(iia4, 30).
 group_size(rt3, 30).
 group_size(gl4, 30).
+group_size(bio3, 30).
+group_size(ch3, 30).
 
 % group_blackout(Group, TimeSlot)
 % gl3 has wednesday afternoon free but can study on saturday
@@ -57,6 +59,6 @@ group_blackout(rt3, t63).
 group_blackout(ch3, t34).
 group_blackout(ch3, t35).
 
-% bio3 has wednesday afternoon free and saturday free
+% bio3 has wednesday afternoon free
 group_blackout(bio3, t34).
 group_blackout(bio3, t35).

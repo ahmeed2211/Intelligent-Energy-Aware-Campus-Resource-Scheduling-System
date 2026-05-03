@@ -1,12 +1,17 @@
+% course(name, session_duration_list, group, required_equipment).
+% group ch3
+
+:- multifile course/4.
+
 course(ch3_fr, [1], ch3, none).
 course(ch3_eng, [1], ch3, none).
 course(stategie_sythese, [1], ch3, projector).
 course(gestion_traitement, [1], ch3, projector).
 course(electrochimie, [1], ch3, projector).
-course(methodes_separation,  [1], ch3, projector).
-course([electrochimie, automatisation_regulation_capteurs_trait_inf], [1], ch3, lab).
-course(methodes_numeriques,[1], ch3, projector).
-course([methodes_numeriques, etas_de_la_matiere],[2], ch3, lab).
+course(methodes_separation, [1], ch3, projector).
+course([electrochimie, automatisation_regulation_capteurs_trait_inf], [2], ch3, lab).
+course(methodes_numeriques, [1], ch3, projector).
+course([methodes_numeriques, etas_de_la_matiere], [2], ch3, lab).
 course(etas_de_la_matiere, [1], ch3, projector).
 course([methodes_separation, stategie_sythese], [1], ch3, lab).
 course(ch3_arabe, [1], ch3, none).
@@ -14,7 +19,3 @@ course(ch3_marketing, [1], ch3, none).
 course(optimisation, [1], ch3, projector).
 course(traitement_des_eaux, [1], ch3, projector).
 course(automatisation_regulation_capteurs_trait_inf, [1], ch3, projector).
-
-
-
-
