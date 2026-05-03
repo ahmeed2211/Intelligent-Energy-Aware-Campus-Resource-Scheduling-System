@@ -6,12 +6,16 @@
 % count_room_sessions(+Room, +Day, +Schedule, -Count)
 % Counts how many timeslots the Room is used on a specific Day in the Schedule
 count_room_sessions(_, _, [], 0).
-count_room_sessions(Room, Day, [session(_, _, _, Room, TimeSlot)|Rest], Count) :-
-    timeslot(TimeSlot, Day, _), !,
+count_room_sessions(Room, Day, [session(_, _, _, AssignedRoom, TimeSlot)|Rest], Count) :-
+    timeslot(TimeSlot, Day, _),
+    is_room_in(Room, AssignedRoom), !,
     count_room_sessions(Room, Day, Rest, RestCount),
     Count is RestCount + 1.
 count_room_sessions(Room, Day, [_|Rest], Count) :-
     count_room_sessions(Room, Day, Rest, Count).
+
+is_room_in(Room, Room) :- !.
+is_room_in(Room, RoomList) :- is_list(RoomList), memberchk(Room, RoomList).
 
 % room_daily_energy(+Room, +Day, +Schedule, -TotalEnergy)
 % Calculates the total energy used by a single room in one day based on the Schedule
@@ -41,7 +45,6 @@ validate_building_energy(Building, Day, Schedule) :-
     ( TotalEnergy =< Threshold -> 
         true
     ; 
-        format('WARNING: Building ~w exceeded daily threshold on ~w (Usage: ~w, Limit: ~w)~n', [Building, Day, TotalEnergy, Threshold]),
         fail
     ).
 

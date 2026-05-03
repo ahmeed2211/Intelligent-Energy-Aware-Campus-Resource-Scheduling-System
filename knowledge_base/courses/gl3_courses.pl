@@ -18,3 +18,4 @@ course(complex, [1], gl3, none).
 course(web, [1, 3], gl3, projector).
 course(concept, [1], gl3, projector).
 course([db, dist_sys], [1], gl3, lab).
+course(gl3_ppp, [1], gl3, none).
