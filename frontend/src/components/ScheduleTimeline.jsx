@@ -102,27 +102,58 @@ export default function ScheduleTimeline({ data, groupId }) {
                       }
                     }
 
+                    const isCompact = item.courses.length > 2;
+                    const useGrid = item.courses.length >= 3;
+
                     return (
                       <S.SlotCell key={slot.key} colSpan={colSpan}>
-                        <S.SplitContainer>
-                          {item.courses.map((course, idx) => {
-                            const room = item.rooms[idx] || item.rooms[0] || item.room;
-                            const gradient = getCourseColor(course.trim());
-                            const transTitle = translater[course.trim().toLowerCase()] || course.trim().toUpperCase();
-                            
-                            return (
-                              <S.CourseCard key={idx} $gradient={gradient}>
-                                <S.CourseTitle title={course}>
-                                  {transTitle}
-                                </S.CourseTitle>
-                                <S.CourseMeta>
-                                  <S.RoomBadge>{room.toUpperCase()}</S.RoomBadge>
-                                  {item.sessionIndex > 1 && <S.SessionBadge>S{item.sessionIndex}</S.SessionBadge>}
-                                </S.CourseMeta>
-                              </S.CourseCard>
-                            );
-                          })}
-                        </S.SplitContainer>
+                        <S.UnifiedCourseCard 
+                          $gradient={getCourseColor(item.courses[0].trim())}
+                          $isCompact={isCompact}
+                        >
+                          {useGrid ? (
+                            <S.CourseGrid>
+                              {[0, 1, 2, 3].map((idx) => {
+                                const course = item.courses[idx];
+                                if (!course) return <S.GridItem key={idx} />;
+                                
+                                const room = item.rooms[idx] || item.rooms[0] || item.room;
+                                const transTitle = translater[course.trim().toLowerCase()] || course.trim().toUpperCase();
+                                
+                                return (
+                                  <S.GridItem key={idx}>
+                                    <S.GridCourseTitle title={course}>
+                                      {transTitle}
+                                    </S.GridCourseTitle>
+                                    <S.GridRoomBadge>
+                                      {room.toUpperCase()}
+                                    </S.GridRoomBadge>
+                                  </S.GridItem>
+                                );
+                              })}
+                            </S.CourseGrid>
+                          ) : (
+                            item.courses.map((course, idx) => {
+                              const room = item.rooms[idx] || item.rooms[0] || item.room;
+                              const transTitle = translater[course.trim().toLowerCase()] || course.trim().toUpperCase();
+                              
+                              return (
+                                <React.Fragment key={idx}>
+                                  <S.CourseRow $isCompact={isCompact}>
+                                    <S.CourseTitle title={course} $isCompact={isCompact}>
+                                      {transTitle}
+                                      {item.sessionIndex > 1 && item.courses.length === 1 && (
+                                        <S.SessionBadge style={{ marginLeft: '8px' }}>S{item.sessionIndex}</S.SessionBadge>
+                                      )}
+                                    </S.CourseTitle>
+                                    <S.MultiRoomBadge>{room.toUpperCase()}</S.MultiRoomBadge>
+                                  </S.CourseRow>
+                                  {idx < item.courses.length - 1 && <S.MultiCourseSeparator />}
+                                </React.Fragment>
+                              );
+                            })
+                          )}
+                        </S.UnifiedCourseCard>
                       </S.SlotCell>
                     );
                   })}
