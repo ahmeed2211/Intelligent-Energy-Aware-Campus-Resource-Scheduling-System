@@ -4,11 +4,19 @@ group_size(mpi, 90).
 group_size(imi3, 30).
 group_size(iia3, 30).
 group_size(rt3, 30).
+group_size(gl4, 30).
 
 % group_blackout(Group, TimeSlot)
 % gl3 has wednesday afternoon free but can study on saturday
 group_blackout(gl3, t34).
 group_blackout(gl3, t35).
+
+% gl4 has wednesday afternoon free
+group_blackout(gl4, t34).
+group_blackout(gl4, t35).
+group_blackout(gl4, t61).
+group_blackout(gl4, t62).
+group_blackout(gl4, t63).
 
 % imi3 has Wednesday afternoon free!
 group_blackout(imi3, t34).

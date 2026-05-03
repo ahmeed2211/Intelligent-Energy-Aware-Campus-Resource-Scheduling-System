@@ -16,6 +16,20 @@ export const translater = {
     "concept": "Méthodologies de conception",
     "gl3_ppp": "Project personnel professionel",
 
+    // GL4
+    "devops": "Devops",
+    "traitement_images": "Traitement d'images",
+    "grh": "Gestion des ressources humaines",
+    "deep_learning": "Deep learning",
+    "ihm": "Interface homme-machine",
+    "compilation": "Compilation",
+    "management_projet": "Management de projet",
+    "test_logiciel": "Test logiciel",
+    "big_data": "Big data",
+    "gl4_eng": "Anglais",
+    "architectures_logiciel": "Architectures logicielles",
+    "protocoles_de_securite": "Protocoles de sécurité",
+
     // IIA3
     "ro": "Recherche opérationnelle",
     "auto_indus": "Automatismes industriels",

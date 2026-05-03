@@ -69,12 +69,24 @@ export const EmptySlot = styled.div`
   background: rgba(255, 255, 255, 0.02);
 `;
 
+export const SplitContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+`;
+
 export const CourseCard = styled.div`
   background: ${props => props.$gradient};
   border-radius: 8px;
   padding: 8px 10px;
   color: white;
-  height: 68px;
+  min-height: 68px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -38,13 +38,18 @@ export const getEpgItemsForGroup = (data, groupId) => {
       const courseName = Array.isArray(entry.course)
         ? entry.course.join(', ')
         : entry.course;
+      const roomName = Array.isArray(entry.room)
+        ? entry.room.join(', ')
+        : entry.room;
 
       items.push({
         id: `${entry.timeslot}_${groupId}_${entry.session_index}`,
         channelUuid: day,
         slot,
         title: courseName,
-        room: entry.room,
+        room: roomName,
+        courses: Array.isArray(entry.course) ? entry.course : [entry.course],
+        rooms: Array.isArray(entry.room) ? entry.room : [entry.room],
         sessionIndex: entry.session_index,
       });
     }

@@ -10,10 +10,26 @@ scheduleacc([(Course,Group,K,Duration)|Rest], Partial, Final) :-
     check_all_timeslots_no_room(Course, Group, Timeslots, Partial),
     % 3. Bind room LAST — pick the cheapest valid rooms first!
     valid_rooms_for_course_sorted(Course, SortedRooms),
-    member(Room, SortedRooms),
+    bind_rooms_for_course(Course, SortedRooms, Room),
     check_room_conflicts(Room, Timeslots, Partial),
     add_sessions(Course, Group, K, Room, Timeslots, Partial, NewPartial),
     scheduleacc(Rest, NewPartial, Final).
+
+bind_rooms_for_course(Course, SortedRooms, Rooms) :-
+    is_list(Course), !,
+    length(Course, N),
+    pick_distinct_rooms(N, SortedRooms, Rooms).
+
+bind_rooms_for_course(Course, SortedRooms, Room) :-
+    \+ is_list(Course),
+    member(Room, SortedRooms).
+
+pick_distinct_rooms(0, _, []).
+pick_distinct_rooms(N, AvailableRooms, [Room|RestRooms]) :-
+    N > 0,
+    select(Room, AvailableRooms, RemainingRooms),
+    N1 is N - 1,
+    pick_distinct_rooms(N1, RemainingRooms, RestRooms).
 
 % Helper to get all valid rooms for a course, sorted by energy cost (Cheapest-First Heuristic)
 valid_rooms_for_course_sorted(Course, SortedRooms) :-

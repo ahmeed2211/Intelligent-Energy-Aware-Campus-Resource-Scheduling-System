@@ -102,22 +102,27 @@ export default function ScheduleTimeline({ data, groupId }) {
                       }
                     }
 
-                    const gradient = getCourseColor(item.title.split(',')[0].trim());
-                    
                     return (
                       <S.SlotCell key={slot.key} colSpan={colSpan}>
-                        <S.CourseCard $gradient={gradient}>
-                          <S.CourseTitle title={item.title}>
-                            {item.title.split(',').map(part => {
-                              const key = part.trim().toLowerCase();
-                              return translater[key] || part.trim().toUpperCase();
-                            }).join(' / ')}
-                          </S.CourseTitle>
-                          <S.CourseMeta>
-                            <S.RoomBadge>{item.room.toUpperCase()}</S.RoomBadge>
-                            {item.sessionIndex > 1 && <S.SessionBadge>S{item.sessionIndex}</S.SessionBadge>}
-                          </S.CourseMeta>
-                        </S.CourseCard>
+                        <S.SplitContainer>
+                          {item.courses.map((course, idx) => {
+                            const room = item.rooms[idx] || item.rooms[0] || item.room;
+                            const gradient = getCourseColor(course.trim());
+                            const transTitle = translater[course.trim().toLowerCase()] || course.trim().toUpperCase();
+                            
+                            return (
+                              <S.CourseCard key={idx} $gradient={gradient}>
+                                <S.CourseTitle title={course}>
+                                  {transTitle}
+                                </S.CourseTitle>
+                                <S.CourseMeta>
+                                  <S.RoomBadge>{room.toUpperCase()}</S.RoomBadge>
+                                  {item.sessionIndex > 1 && <S.SessionBadge>S{item.sessionIndex}</S.SessionBadge>}
+                                </S.CourseMeta>
+                              </S.CourseCard>
+                            );
+                          })}
+                        </S.SplitContainer>
                       </S.SlotCell>
                     );
                   })}

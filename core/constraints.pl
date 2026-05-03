@@ -33,9 +33,15 @@ instructor_availability_ok(Course, TimeSlot) :-
 % return true if there is no room conflict; the same room cannot be used for two different courses at the same time
 % no_room_conflict(+Room, +TimeSlot, +Assignments)
 no_room_conflict(_,_,[]).
-no_room_conflict(Room, TimeSlot, [session(_, _, _, Room, TimeSlot)|_]) :- !, fail.
+no_room_conflict(Room, TimeSlot, [session(_, _, _, AssignedRoom, TimeSlot)|_]) :-
+    rooms_overlap(Room, AssignedRoom), !, fail.
 no_room_conflict(Room, TimeSlot, [_|Rest]) :-
     no_room_conflict(Room, TimeSlot, Rest).
+
+rooms_overlap(R, R) :- !.
+rooms_overlap(R, List) :- is_list(List), !, memberchk(R, List).
+rooms_overlap(List, R) :- is_list(List), !, memberchk(R, List).
+rooms_overlap(List1, List2) :- is_list(List1), is_list(List2), !, (member(X, List1), memberchk(X, List2)).
 
 % return true if there is no group conflict; the same group cannot be scheduled at the same time in two different rooms
 % no_group_conflict(+Group, +TimeSlot, +Assignments)
