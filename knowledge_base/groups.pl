@@ -34,3 +34,11 @@ group_blackout(rt3, t35).
 group_blackout(rt3, t61).
 group_blackout(rt3, t62).
 group_blackout(rt3, t63).
+
+% ch3 has wednesday afternoon free
+group_blackout(ch3, t34).
+group_blackout(ch3, t35).
+
+% bio3 has wednesday afternoon free and saturday free
+group_blackout(bio3, t34).
+group_blackout(bio3, t35).
