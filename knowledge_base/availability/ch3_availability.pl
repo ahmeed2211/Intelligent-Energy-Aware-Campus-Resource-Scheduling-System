@@ -9,6 +9,7 @@ instructor_available(optimisation, t12).
 instructor_available(optimisation, t13).
 instructor_available(optimisation, t14).
 instructor_available(optimisation, t15).
+
 instructor_available(gestion_traitement, t21).
 instructor_available(gestion_traitement, t22).
 instructor_available(gestion_traitement, t23).
@@ -26,9 +27,11 @@ instructor_available(automatisation_regulation_capteurs_trait_inf, t22).
 instructor_available(automatisation_regulation_capteurs_trait_inf, t23).
 instructor_available(automatisation_regulation_capteurs_trait_inf, t24).
 instructor_available(automatisation_regulation_capteurs_trait_inf, t25).
+
 instructor_available(ch3_marketing, t31).
 instructor_available(ch3_marketing, t32).
 instructor_available(ch3_marketing, t33).
+
 instructor_available(ch3_fr, t41).
 instructor_available(ch3_fr, t42).
 instructor_available(ch3_fr, t43).
