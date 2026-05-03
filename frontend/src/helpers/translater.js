@@ -109,23 +109,6 @@ export const translater = {
     "imi3_fr": "Français",
     "market": "Marketing",
 
-    /*
-course(imi4_grh, [1], imi4, projector).
-course(cem, [1], imi4, none).
-course(meca_continus_solides, [1], imi4, none).
-course([cem, cfao], [2], imi4, lab).
-course(sc_mat, [1], imi4, none).
-course(cfao, [1], imi4, projector).
-course([meca_continus_solides, comm_machi], [2], imi4, lab).
-course(imi4_man_proj, [1], imi4, none).
-course(info_instrum, [1, 2], imi4, none).
-course(imi4_eng, [1], imi4, none).
-course([capt_int_com, micro_electro], [1], imi4, lab).
-course([intell_art, temps_reel], [1], imi4, projector).
-course([aerodynamique, micro_electro], [1], imi4, projector).
-course([aerodynamique, micro_electro, micro_electro, temps_reel], [2], imi4, lab).
-course([capt_int_com, intell_art], [2], imi4, lab).
-    */
     // IMI4
     "imi4_grh": "Gestion des ressources humaines",
     "cem": "CEM sécurité des installations",
@@ -155,6 +138,18 @@ course([capt_int_com, intell_art], [2], imi4, lab).
     "mpi_eng": "Anglais",
     "prog": "Programmation II",
 
+    // CBA
+    "cba_eng": "Anglais",
+    "atom_mol": "Atome molecule",
+    "chim_org": "Chimie organique",
+    "stats": "Statistique",
+    "react_nsp": "Reactivité NSP",
+    "bioch_struct": "Biochimie structurale",
+    "physi": "Physique",
+    "phys_flui": "Physique fluides",
+    "cba_fr": "Français",
+    "infor": "Informatique",
+
     // RT3
     "rt3_fr": "Français",
     "stochastiques": "Processus stochastiques",
@@ -171,4 +166,20 @@ course([capt_int_com, intell_art], [2], imi4, lab).
     "anal_num": "Analyse numérique",
     "sign_sys": "Signaux systèmes",
     "admin_bd": "Administration de bases de données",
+
+    // RT4
+    "theor_lang": "Théorie des langues",
+    "fond_syst_rep": "Fondement des systèmes répartis",
+    "theor_info": "Théorie de l'information",
+    "rt4_eng": "Anglais",
+    "cloud_vis": "Cloud et virtualisation",
+    "traite_img": "Traitement d'images",
+    "deep_learni": "DEEP learning",
+    "business_intel": "Business intelligence",
+    "rt4_grh": "Gestion des ressources humaines",
+    "eval_perf": "Evaluation des performances",
+    "rt4_man_proj": "Management projet",
+    "big_dat": "Big data",
+    "real_virt": "Réalité virtuelle",
+    "crypto": "Cryptographie",
 };

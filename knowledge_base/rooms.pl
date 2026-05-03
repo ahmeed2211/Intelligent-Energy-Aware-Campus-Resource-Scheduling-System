@@ -25,7 +25,7 @@ room(r1_179, 30, lab,  b1, 35).
 room(r2_265, 30, none, b2, 60).
 room(r2_267, 30, none, b2, 60).
 room(r2_269, 30, none, b2, 60).
-room(r2_271, 30, none, b2, 60).
+room(r2_271, 90, none, b2, 60).
 room(r2_273, 90, lab,  b2, 145).
 room(r2_275, 90, lab,  b2, 145).
 room(r2_277, 90, lab,  b2, 145).
