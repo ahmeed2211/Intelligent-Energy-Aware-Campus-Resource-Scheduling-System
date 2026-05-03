@@ -9,13 +9,17 @@
 :- consult('knowledge_base/courses/gl3_courses.pl').
 :- consult('knowledge_base/courses/mpi_courses.pl').
 :- consult('knowledge_base/courses/imi3_courses.pl').
+:- consult('knowledge_base/courses/imi4_courses.pl').
 :- consult('knowledge_base/courses/iia3_courses.pl').
+:- consult('knowledge_base/courses/iia4_courses.pl').
 :- consult('knowledge_base/courses/rt3_courses.pl').
 
 :- consult('knowledge_base/availability/gl3_availability.pl').
 :- consult('knowledge_base/availability/mpi_availability.pl').
 :- consult('knowledge_base/availability/imi3_availability.pl').
+:- consult('knowledge_base/availability/imi4_availability.pl').
 :- consult('knowledge_base/availability/iia3_availability.pl').
+:- consult('knowledge_base/availability/iia4_availability.pl').
 :- consult('knowledge_base/availability/rt3_availability.pl').
 
 :- consult('core/helpers.pl').
